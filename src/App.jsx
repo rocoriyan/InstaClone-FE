@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import LogOrSign from "./components/logOrSign/LogOrSign";
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-    <p>Hello World!!</p>
-    </>
+    <div className="wrapper">
+      <LogOrSign/>
+    </div>
   )
 }
 
