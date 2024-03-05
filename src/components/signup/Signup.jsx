@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { signup } from "../../utils/fetch";
 
-const Signup = () => {
+const Signup = ({ setUser }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +15,13 @@ const Signup = () => {
     const handleSubmit = async(e) => {
         e.preventDefault();
         console.log("hello from signup submit");
-        await signup(username, email, password);
+        const data = await signup(username, email, password);
+        if(data.error != null){
+            console.log("an error has occured: \""+data.message+"\"");
+        }
+        else{
+            await setUser(data.user);
+        }
     }
 
     return (
